@@ -7,6 +7,7 @@ const Header = () => {
         <li><NavLink to='/appliedjobs'>Applied Jobs</NavLink></li>
         <li><NavLink to='/statistics'>Statistics</NavLink></li>
         <li><NavLink to='/blogs'>Blogs</NavLink></li>
+        <li><NavLink to='/login'>Login</NavLink></li>
     </>
     return (
         <div className="shadow-lg">

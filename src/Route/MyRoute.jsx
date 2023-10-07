@@ -4,6 +4,8 @@ import Home from "../Pages/Home/Home";
 import AppliedJobs from "../Pages/AppliedJobs/AppliedJobs";
 import Blogs from "../Pages/Blogs/Blogs";
 import JobDetails from "../components/JobDetails/JobDetails";
+import Login from "../components/Login/Login";
+import Register from "../components/Register/Register";
 
 const MyRoute = createBrowserRouter([
     {
@@ -28,6 +30,14 @@ const MyRoute = createBrowserRouter([
                 path: '/job/:id',
                 element: <JobDetails></JobDetails>,
                 loader: () => fetch('/jobs.json')
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
+            },
+            {
+                path: '/register',
+                element: <Register></Register>
             }
         ]
     }
