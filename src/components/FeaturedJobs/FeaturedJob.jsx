@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import {GoLocation} from 'react-icons/go';
 import {HiOutlineCurrencyDollar} from 'react-icons/hi';
+import { Link } from 'react-router-dom';
 const FeaturedJob = ({job}) => {
     const {id,logo,job_title,company_name,remote_or_onsite,location,job_type,salary,} = job;
     return (
@@ -24,7 +25,9 @@ const FeaturedJob = ({job}) => {
                     <h2>{salary}</h2>
                 </div>
             </div>
-            <button className='bg-blue-600 text-white py-2 px-3 rounded-lg my-4'>View Details</button>
+            {/* dynamic route   */}
+            <Link to={`/job/${id}`}>
+            <button className='bg-blue-600 text-white py-2 px-3 rounded-lg my-4'>View Details</button></Link>
         </div>
     );
 };
