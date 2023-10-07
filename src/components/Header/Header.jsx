@@ -9,7 +9,7 @@ const Header = () => {
         <li><NavLink to='/blogs'>Blogs</NavLink></li>
     </>
     return (
-        <div>
+        <div className="shadow-lg">
             <div className="navbar bg-base-100">
                 <div className="navbar-start">
                 <div className="dropdown">
@@ -28,7 +28,7 @@ const Header = () => {
                 </ul>
                 </div>
                 <div className="navbar-end">
-                <a className="btn">Button</a>
+                <a className="btn bg-blue-600 text-white">Star Applying</a>
                 </div>
                 </div>
         </div>
