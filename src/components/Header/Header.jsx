@@ -1,13 +1,24 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../Hook/AuthProvider/AuthProvider";
 
 const Header = () => {
+    const {user,logOut} = useContext(AuthContext);
+    const handleSignOut = () =>{
+        logOut()
+        .then(res => console.log(res.user))
+        .catch(error => console.log(error.message))
+    }
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/jobs'>Jobs</NavLink></li>
         <li><NavLink to='/appliedjobs'>Applied Jobs</NavLink></li>
         <li><NavLink to='/statistics'>Statistics</NavLink></li>
         <li><NavLink to='/blogs'>Blogs</NavLink></li>
-        <li><NavLink to='/login'>Login</NavLink></li>
+        <li>{
+            user ? <span><button onClick={handleSignOut}>Sign Out </button><span className="text-blue-700 hidden md:block">{user.email}</span></span>:
+            <NavLink to='/login'>Login</NavLink>
+        }</li>
     </>
     return (
         <div className="shadow-lg">

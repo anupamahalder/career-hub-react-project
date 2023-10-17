@@ -1,11 +1,26 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Hook/AuthProvider/AuthProvider";
 const Login = () => {
     //destructure 
     const {googleSignIn} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const handleLogin = e =>{
+        e.preventDefault();
+        // const form = e.target;
+        // const name = form.name.value;
+        // const email = form.email.value;
+        // const password = form.password.value;
+    }
     const handleGoogleSignIn = () =>{
-        googleSignIn("From Google!");
+        googleSignIn()
+        .then(res =>{
+            console.log(res.user);
+            navigate('/');
+        })
+        .catch(error =>{
+            console.log(error.message);
+        })
     }
     return (
         <div>
@@ -18,7 +33,7 @@ const Login = () => {
                     
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         {/* form section  */}
-                    <form 
+                    <form onSubmit={handleLogin}
                     className="card-body">
                         <div className="form-control">
                         <label className="label">

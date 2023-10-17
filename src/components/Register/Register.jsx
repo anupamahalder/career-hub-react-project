@@ -1,5 +1,9 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Hook/AuthProvider/AuthProvider";
 const Register = () => {
+    const {signUp} = useContext(AuthContext);
+
     return (
         <div>
             <div className="hero min-h-screen bg-base-200">
@@ -33,7 +37,8 @@ const Register = () => {
                         </label>
                         </div>
                         <div className="form-control mt-6">
-                        <button className="btn bg-blue-600 text-white">Register</button>
+                        <button
+                        className="btn bg-blue-600 text-white">Register</button>
                         </div>
                         <div className="form-control mt-6">
                         </div>
