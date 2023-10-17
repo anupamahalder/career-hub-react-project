@@ -1,9 +1,13 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Hook/AuthProvider/AuthProvider";
 const Register = () => {
     const {signUp} = useContext(AuthContext);
-
+    // declare states for EmailAuthCredential,password and error 
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    
     return (
         <div>
             <div className="hero min-h-screen bg-base-200">
@@ -25,13 +29,16 @@ const Register = () => {
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input type="email" placeholder="email" className="input input-bordered" required />
+                        {/* using onChange event handler set value to state  */}
+                        <input onChange={(e) => setEmail(e.target.value)}
+                        type="email" placeholder="email" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                         <label className="label">
                             <span className="label-text">Password</span>
                         </label>
-                        <input type="password" placeholder="password" className="input input-bordered" required />
+                        <input onChange={e=>setPassword(e.target.value)} 
+                        type="password" placeholder="password" className="input input-bordered" required />
                         <label className="label">
                             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                         </label>
