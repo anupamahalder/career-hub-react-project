@@ -1,17 +1,11 @@
 import { useContext } from "react";
-import { AuthContext } from "../../Hook/AuthProvider/AuthProvider";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Hook/AuthProvider/AuthProvider";
 const Login = () => {
-    // we can access function which is shared by AuthContext 
-    // const {getValueFromWhoIsUsingIt} = useContext(AuthContext);
+    //destructure 
     const {googleSignIn} = useContext(AuthContext);
     const handleGoogleSignIn = () =>{
-        // call the googleSignIn function after calling this we'll get then and there will be response 
-        googleSignIn()
-        .then(result =>{
-            console.log(result.user);
-        })
-        .catch(error => console.log(error.message));
+        googleSignIn("From Google!");
     }
     return (
         <div>
@@ -43,7 +37,7 @@ const Login = () => {
                         </div>
                         <div className="form-control mt-6">
                         <button className="btn bg-blue-700 text-white">Login</button>
-                        <button onClick={handleGoogleSignIn}
+                        <button onClick={handleGoogleSignIn} 
                          className="btn bg-red-300 text-black mt-3">Login with Google</button>
                         </div>
                         <div className="form-control mt-6">

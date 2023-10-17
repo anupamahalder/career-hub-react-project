@@ -8,7 +8,8 @@ import AuthProvider from './Hook/AuthProvider/AuthProvider';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
-    <RouterProvider router={MyRoute}></RouterProvider>
+      {/* this is the children of authprovider  */}
+      <RouterProvider router={MyRoute}></RouterProvider>
     </AuthProvider>
   </React.StrictMode>,
 )
