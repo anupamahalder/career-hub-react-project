@@ -21,8 +21,7 @@ const Login = () => {
                     <div className="text-center lg:text-left">
                     <h1 className="text-5xl font-bold">Login now!</h1>
                     </div>
-                    <button onClick={handleGoogleSignIn}
-                         className="btn bg-red-400 text-black">Login with Google</button>
+                    
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         {/* form section  */}
                     <form 
@@ -43,7 +42,9 @@ const Login = () => {
                         </label>
                         </div>
                         <div className="form-control mt-6">
-                        <button className="btn bg-blue-600 text-white">Login</button>
+                        <button className="btn bg-blue-700 text-white">Login</button>
+                        <button onClick={handleGoogleSignIn}
+                         className="btn bg-red-300 text-black mt-3">Login with Google</button>
                         </div>
                         <div className="form-control mt-6">
                         </div>
