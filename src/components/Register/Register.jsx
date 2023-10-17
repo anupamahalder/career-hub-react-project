@@ -14,15 +14,30 @@ const Register = () => {
         e.preventDefault();
         // password validation 
         if(!/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(password)){
-            alert("Minimum eight characters, at least one letter, one number and one special character is required!");
+            setError("Minimum eight characters, at least one letter, one number and one special character is required!");
+        }
+        else{
+            // password is okay 
+            setError("");
+            // validate email 
+            if(!/^([a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?)$/.test(email)){
+                setError('Please give valid email!');
+            }
+            else{
+                // if email and password both true or valid then only call signUp 
+                
+            }
         }
     }
     return (
         <div>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col">
-                    <div className="text-center lg:text-left">
+                    <div className="text-center">
                     <h1 className="text-5xl font-bold">Register now!</h1>
+                    {
+                        error && <p className="w-[500px] pt-3 text-red-600">{error}</p>
+                    }
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         {/* form section  */}
