@@ -1,6 +1,6 @@
 /* eslint-disable no-constant-condition */
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Hook/AuthProvider/AuthProvider";
 const Register = () => {
     const {signUp} = useContext(AuthContext);
@@ -8,6 +8,8 @@ const Register = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+
+    const navigate = useNavigate();
 
     // handle register 
     const handleRegister = (e) =>{
@@ -25,7 +27,13 @@ const Register = () => {
             }
             else{
                 // if email and password both true or valid then only call signUp 
-                
+                signUp(email,password)
+                .then(res=>{
+                    console.log(res.user);
+                    alert('Registration done successfully!');
+                    navigate('/');
+                })
+                .catch(error => console.log(error.message));
             }
         }
     }
