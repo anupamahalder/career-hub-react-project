@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { createContext, useEffect, useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword, 
+import { createUserWithEmailAndPassword, 
     signInWithEmailAndPassword,  GoogleAuthProvider,
-    signInWithPopup,
-    signOut,
+    signInWithPopup,signOut,
     onAuthStateChanged, 
 }from "firebase/auth";
 import auth from '../Firebase/firebase.config';
@@ -36,12 +35,12 @@ const AuthProvider = ({children}) => {
         return signOut(auth);
     }
     
-    // set an observer 
+    // set an observer given by firebase to observe user is there or not
     useEffect(()=>{
         const unSubscribe = onAuthStateChanged(auth, currentUser =>{
             setUser(currentUser);
         })
-
+        //return with calling unsubscribe
         return ()=>{
             unSubscribe();
         }

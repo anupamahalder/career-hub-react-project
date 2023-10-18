@@ -16,7 +16,7 @@ const Header = () => {
         <li><NavLink to='/statistics'>Statistics</NavLink></li>
         <li><NavLink to='/blogs'>Blogs</NavLink></li>
         <li>{
-            user ? <span><button onClick={handleSignOut}>Sign Out </button><span className="text-blue-700 hidden md:block">{user.email}</span></span>:
+            user ? <span><button onClick={handleSignOut}>Sign Out </button><span className="text-blue-700 hidden md:block hover:bg-none cursor-default">{user.email}</span></span>:
             <NavLink to='/login'>Login</NavLink>
         }</li>
     </>

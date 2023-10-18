@@ -6,6 +6,8 @@ import Blogs from "../Pages/Blogs/Blogs";
 import JobDetails from "../components/JobDetails/JobDetails";
 import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
+import PrivateRoute from "../Hook/AuthProvider/PrivateRoute";
+import Jobs from "../Pages/Jobs/Jobs";
 
 const MyRoute = createBrowserRouter([
     {
@@ -20,6 +22,12 @@ const MyRoute = createBrowserRouter([
             {
                 path: '/appliedjobs',
                 element: <AppliedJobs></AppliedJobs>
+            },
+            {
+                path: '/jobs',
+                element: <PrivateRoute>
+                    <Jobs></Jobs>
+                </PrivateRoute>
             },
             {
                 path: '/blogs',
