@@ -1,10 +1,12 @@
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Hook/AuthProvider/AuthProvider";
 const Login = () => {
     //destructure 
     const {googleSignIn, logInWithEmailAndPassword} = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
+
     //declare states for email, password and error message 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -14,7 +16,7 @@ const Login = () => {
         googleSignIn()
         .then(res =>{
             console.log(res.user);
-            navigate('/');
+            navigate(location?.state ? location.state : '/');
         })
         .catch(error =>{
             console.log(error.message);
@@ -30,7 +32,7 @@ const Login = () => {
                 console.log(res.user);
                 setError("");
                 alert("Login successful!");
-                navigate('/');
+                navigate(location?.state ? location.state : '/');
             })
             .catch(error =>{
                 setError(error.message);

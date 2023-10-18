@@ -1,17 +1,18 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext } from 'react';
 import { AuthContext } from './AuthProvider';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const PrivateRoute = ({children}) => {
     const {user} = useContext(AuthContext);
+    const location = useLocation();
     // if user is logged in then only allow to see children 
     if(user){
-        children
+        return children;
     }
     // else navigate to login page 
-    return <Navigate to='/login'></Navigate>
+    return <Navigate state={location?.pathname} to='/login' replace></Navigate>
 };
 
 // Adding proptypes 
